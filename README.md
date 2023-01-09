@@ -1,8 +1,10 @@
 # 🏰 랜덤 면접 디펜스 🏰
-<b>랜면디</b>는 터미널을 열 때마다 랜덤한 기술면접 질문을 노출하는 서비스입니다.
+<b>랜면디</b>는 터미널을 열 때마다 랜덤한 웹 개발 기술면접 질문을 노출하는 서비스입니다.
+
+<img width="588" alt="image" src="https://user-images.githubusercontent.com/55067949/211290409-ce0992db-16b6-4fee-baff-f227512e829b.png">
 
 ## 사용법
-<b>1. 레포를 설치합니다.</b>
+<b>1. 레포를 클론합니다.</b>
 ```
 git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/RID
 ```
@@ -14,6 +16,7 @@ brew install fortune
 ```
 - ubuntu
 ```
+apt-get update
 apt-get install fortune-mod
 ```
 
@@ -41,5 +44,14 @@ fortune ~/RID/quiz
 2. `strfile target.fortune` 명령어로 `.dat` 포맷 파일을 생성합니다.
    - 백엔드 질문을 추가하고 싶은 경우 : `strfile ./quiz/backend.fortune`
    - 프론트엔드 질문을 추가하고 싶은 경우 : `strfile ./quiz/frontend.fortune`
+3. answer 디렉터리에 있는 타겟을 선택해 원하는 문제에 대한 정답을 추가합니다. 🚨 이때 <b>답안의 길이는 1줄로 제한합니다.</b>
 
 ## 기여 가이드
+면접 질문 / 팁 / 답안에 대한 컨텐츠 추가 혹은 피드백 모두 적극 환영합니다!
+기여 시, 해당 자료에 기여해 주신 분들의 github id를 추가해 드립니다 :D
+- issue로 기여
+   1. 새로운 이슈를 발행하고 `🏆 새 자료`, `🚨 검수가 필요해요` 등 상황에 맞는 라벨을 부착합니다.
+   2. 수정 / 피드백의 경우 이슈 코멘트에 컨텐츠 내용 변경에 대한 이유를 추가적으로 기술합니다.
+- Pull request로 기여
+   1. 레포를 추가한 뒤 `나만의 질문 업로드 가이드` 양식에 맞추어 자료를 추가하고 PR을 요청합니다.
+   2. 수정 / 피드백의 경우 PR 코멘트에 컨텐츠 내용 변경에 대한 이유를 추가적으로 기술합니다.
