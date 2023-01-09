@@ -1,3 +1,3 @@
-정답 확인 : sh ~/RID/query.sh backend 1
+b 1 네트워크 소켓이란 무엇인가요?
 %
-정답 확인 : ~/RID/query.sh backend 2
+b 2 웹 서버 환경에서 보편적으로 CPU 부하 분산보다 I/O 부하 분산처리가 더 어려운 이유는 무엇인가요?
