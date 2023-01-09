@@ -19,7 +19,7 @@ then
   TARGET="frontend"
 fi
 
-if [ ${TARGET} -eq 0 ]
+if [ ${TARGET} == 0 ]
 then
   echo "정답 질의 포맷이 잘못되었습니다!"
   echo "백엔드 정답 검색 : sh ~/RID/query.sh [b or backend] 퀴즈번호"
