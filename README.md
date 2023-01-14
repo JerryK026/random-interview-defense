@@ -56,6 +56,9 @@ source ~/.bashrc
 2. `sh ~/RID/build.sh` 명령어로 `.dat` 포맷 파일을 생성합니다
 3. answer 디렉터리에서 원하는 주제 폴더에 들어가서 `문제번호.txt`로 저장합니다
 
+## 질문 리스트
+질문 리스트는 [위키](https://github.com/JerryK026/random-interview-defense/wiki)에서 확인할 수 있습니다!
+
 ## 기여 가이드
 면접 질문 / 팁 / 답안에 대한 컨텐츠 추가 혹은 피드백 모두 적극 환영합니다!
 기여 시, 해당 자료에 기여해 주신 분들의 github id를 추가해 드립니다 :D
