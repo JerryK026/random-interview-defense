@@ -3,8 +3,8 @@
 if [ $# -ne 2 ]
 then
   echo "정답 질의 포맷이 잘못되었습니다!"
-  echo "백엔드 정답 검색 : sh ~/RID/query.sh [b or backend] 퀴즈번호"
-  echo "프론트엔드 정답 검색 : sh ~/RID/query.sh [f or frontend] 퀴즈번호"
+  echo "백엔드 정답 검색 : RID [b or backend] 퀴즈번호"
+  echo "프론트엔드 정답 검색 : RID [f or frontend] 퀴즈번호"
   exit 1
 fi
 
@@ -22,10 +22,10 @@ fi
 if [ ${TARGET} == 0 ]
 then
   echo "정답 질의 포맷이 잘못되었습니다!"
-  echo "백엔드 정답 검색 : sh ~/RID/query.sh [b or backend] 퀴즈번호"
-  echo "프론트엔드 정답 검색 : sh ~/RID/query.sh [f or frontend] 퀴즈번호"
+  echo "백엔드 정답 검색 : RID [b or backend] 퀴즈번호"
+  echo "프론트엔드 정답 검색 : RID [f or frontend] 퀴즈번호"
   exit 1
 fi
 
-LOCATION="/$2/"
-awk $LOCATION ~/RID/answer/$TARGET
+NUMBER="$2"
+cat ~/RID/answer/$TARGET/$NUMBER.txt
