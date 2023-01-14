@@ -12,6 +12,6 @@ backend Q6. 컴퓨터를 막 부팅했을 때, 컴퓨터 성능이 느린 이유
 %
 backend Q7. 트랜잭션 격리 수준에서 Read Committed와 Repeatable Read 수준의 차이점은 무엇일까요?
 %
-backend 08. InnoDB의 경우 Repeatable Read 수준에서도 Phantom Read 현상이 발생하지 않는 이유가 무엇인가요?
+backend Q8. InnoDB의 경우 Repeatable Read 수준에서도 Phantom Read 현상이 발생하지 않는 이유가 무엇인가요?
 %
 backend 09. 네트워크를 통해 인터넷으로 데이터를 전송할 때의 흐름을 프로세스부터 설명해 보시겠어요?

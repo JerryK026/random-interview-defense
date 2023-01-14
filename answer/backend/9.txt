@@ -1,0 +1,7 @@
+Q9 네트워크를 통해 인터넷으로 데이터를 전송할 때의 흐름을 프로세스부터 설명해 보시겠어요?
+
+애플리케이션 프로세스에서 Socket에 "Stream" 데이터를 쓰기 작업해 전송 계층으로 보냅니다
+전송 계층에서는 Stream 데이터를 MSS(Maximum Segment Size)를 기준으로 잘라 "Segment"로 만드는 "Segmentation" 후 Network 계층으로 보냅니다
+Network 계층에서 Segment를 인터넷으로 전송 가능한 형태의 default 1500 byte인 "Packet"으로 만들어 데이터 링크 계층으로 보냅니다
+데이터 링크 계층에서는 패킷을 "Frame"으로 "Encapsulation"해 인터넷으로 전송합니다
+참고 : https://www.youtube.com/watch?v=p6ASAAMwgd8

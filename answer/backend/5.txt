@@ -1,0 +1,8 @@
+Q5. DB 내부에서 수행하는 JOIN의 3가지 종류에는 어떤 것이 있을까요?
+
+NL(Nested Loop), Sort-Merge, Hash입니다
+NL은 이중 for문 처럼 두 개의 테이블 row를 각각 확인해 조인하는 방법입니다
+인덱스가 있을 때와 선행테이블 크기가 작을 때 유리합니다
+Sort-Merge는 조건에 맞는 행을 찾아 정렬한 뒤 비교하는 방식입니다
+Hash는 해시값으로 필터링 후 실제 값을 비교하는 방식입니다
+참고 : https://hoon93.tistory.com/46

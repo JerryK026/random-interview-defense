@@ -1,0 +1,6 @@
+Q7. 트랜잭션 격리 수준에서 Read Committed와 Repeatable Read 수준의 차이점은 무엇일까요?
+
+Read Committed 수준은 Oracle에서 기본으로 사용되며, 아직 커밋되지 않은 트랜잭션에서 수정한 데이터를 읽을 수 있는 "Dirty Read" 문제를 해결합니다
+그러나 다른 트랜잭션에서 수정하고 커밋 완료한 경우 현재 트랜잭션에서 다시 읽은 값이 달라질 수 있는 "Non-Repeatable Read"라는 문제가 발생합니다
+Repeatable Read 격리 수준은 MySQL의 InnoDB에서 기본으로 사용되며 트랜잭션 마다 버전을 기입해서 현재 트랜잭션보다 낮은 버전의 데이터만 보게 해 Non-Repeatable Read 문제를 해결합니다
+그러나 쓰기 잠금을 거는 경우 다른 트랜잭션에 의해 수정된 레코드가 보이기도 하는 "Phantom Read"라는 현상을 겪을 수도 있습니다
