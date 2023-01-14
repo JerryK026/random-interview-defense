@@ -30,6 +30,17 @@ fortune ~/RID/quiz
 alias RID='~/RID/query.sh'
 ```
 
+<b>4. alias를 등록합니다</b>
+- mac
+```bash
+source ~/.zshrc
+```
+
+- ubuntu
+```bash
+source ~/.bashrc
+```
+
 💡 vi환경에서 shift + g를 누르면 파일 맨 마지막 줄로 이동합니다
 
 💡 Powerlevel10k 사용 시 instant prompt 옵션을 종료해야 콘솔 출력 경고가 발생하지 않습니다 [참고](https://github.com/JerryK026/random-interview-defense/issues/7)
