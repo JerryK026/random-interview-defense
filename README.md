@@ -59,6 +59,8 @@ source ~/.bashrc
 ## 질문 리스트
 질문 리스트는 [위키](https://github.com/JerryK026/random-interview-defense/wiki)에서 확인할 수 있습니다!
 
+외에도 원하는 자료나 검수할 내용이 있다면 [이슈](https://github.com/JerryK026/random-interview-defense/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) 탭에서 자유롭게 신청해 주세요
+
 ## 기여 가이드
 면접 질문 / 팁 / 답안에 대한 컨텐츠 추가 혹은 피드백 모두 적극 환영합니다!
 기여 시, 해당 자료에 기여해 주신 분들의 github id를 추가해 드립니다 :D
