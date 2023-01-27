@@ -1,0 +1,8 @@
+Q6. CORS가 무엇인지 말씀해 주세요
+
+CORS(Cross-Origin Resource Sharing)는 교차 출처 리소스 공유라고 불리웁니다
+
+브라우저는 "동일 출처 원칙"에 의거하여 API 요청 시 브라우저의 현재 주소와 API 주소의 도메인이 일치(Scheme, Host, Port)해야만 데이터로 접근할 수 있습니다
+만약 다른 도메인에서 API를 요청해 사용할 수 있게 하려면 서버에서 Access-Control-Allow-Origin 헤더에 대한 설정이 필요합니다
+
+기여자 : aeong98

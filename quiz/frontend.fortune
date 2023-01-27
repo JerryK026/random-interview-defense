@@ -1,3 +1,20 @@
-정답 확인 : sh ~/RID/query.sh frontend 1
+frontend Q1. 실행 컨텍스트에 대해 설명해 주세요
+출제자 : aeong98
 %
-정답 확인 : ~/RID/query.sh frontend 2
+frontend Q2. 호이스팅에 대해 설명해 주세요
+출제자 : aeong98
+%
+frontend Q3. JS에서 this에 대해 설명해 주세요
+출제자 : aeong98
+%
+frontend Q4. CSR과 SSR의 차이는 무엇인가요?
+출제자 : aeong98
+%
+frontend Q5. 이벤트 루프와 태스크 큐에 대해 설명해 주세요
+출제자 : aeong98
+%
+frontend Q6. CORS가 무엇인지 말씀해 주세요
+출제자 : aeong98
+%
+frontend Q7. 브라우저 렌더링 과정에 대해 설명해 주세요
+출제자 : aeong98
