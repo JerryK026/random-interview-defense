@@ -1,0 +1,3 @@
+[submodule "server"]
+	path = server
+	url = https://github.com/JerryK026/random-interview-defense-server.git
