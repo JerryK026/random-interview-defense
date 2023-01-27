@@ -6,7 +6,7 @@ backend Q3. A 레코드와 CNAME 레코드, MX 레코드에 대해 들어보신 
 %
 backend Q4. 인덱스를 구성할 때 이진트리가 아닌 B+트리를 사용했을 때의 장점은 무엇이 있을까요?
 %
-backend Q5. DB 내부에서 수행하는 JOIN의 3가지 종류에는 어떤 것이 있을까요?
+backend Q5. DB가 JOIN을 수행하는 방법에는 어떠한 것들이 있을까요?
 %
 backend Q6. 컴퓨터를 막 부팅했을 때, 컴퓨터 성능이 느린 이유는 무엇일까요?
 %
@@ -14,4 +14,8 @@ backend Q7. 트랜잭션 격리 수준에서 Read Committed와 Repeatable Read �
 %
 backend Q8. InnoDB의 경우 Repeatable Read 수준에서도 Phantom Read 현상이 발생하지 않는 이유가 무엇인가요?
 %
-backend 09. 네트워크를 통해 인터넷으로 데이터를 전송할 때의 흐름을 프로세스부터 설명해 보시겠어요?
+backend Q9. 네트워크를 통해 인터넷으로 데이터를 전송할 때의 흐름을 프로세스부터 설명해 보시겠어요?
+%
+backend Q10. HTTP 프로토콜이란 무엇인가요?
+%
+backend Q11. N+1 문제란 무엇이고 왜 발생하며 JPA에서는 어떻게 해결할 수 있을까요?
