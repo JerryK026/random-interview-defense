@@ -16,9 +16,9 @@
 - mac : `vi ~/.zshrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
 
 ```bash
+alias rid='~/rid/webQuery.sh'
 echo "정답 찾는 법 : rid -r"
 rid
-alias rid='~/rid/webQuery.sh'
 ```
 
 <b>curl에 들어갈 문장을 수정해 원하는 문제 유형을 선택할 수도 있습니다</b>
@@ -53,9 +53,9 @@ brew install fortune
 - mac : `vi ~/.zshrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
 
 ```bash
+alias rid='~/rid/query.sh'
 echo "정답 찾는 법 : rid [b or f] 퀴즈번호"
 fortune ~/rid/quiz
-alias rid='~/rid/query.sh'
 ```
 
 <b>4. alias를 등록합니다</b>
