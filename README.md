@@ -3,10 +3,43 @@
 
 <img width="588" alt="image" src="https://user-images.githubusercontent.com/55067949/211290409-ce0992db-16b6-4fee-baff-f227512e829b.png">
 
-## 사용법
+## 웹 버전 사용법 - 권장!
+해당 레포가 업데이트 될 때마다 pull할 필요가 없습니다
+받은 질문을 서버가 기억하고 알아서 답변합니다
+
+<b>🚨 베타버전이기 때문에 도메인 주소가 변경될 수도 있습니다</b>
+
+<b>1. 해당 레포의 webQuery.sh 파일을 `~/rid/` 위치에 추가합니다</b>
+
+<b>2. 터미널 설정 파일에 원하는 퀴즈를 등록합니다</b>
+- mac : `vi ~/.zshrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
+
+```bash
+echo "정답 찾는 법 : rid -r"
+rid
+alias rid='~/rid/webQuery.sh'
+```
+
+<b>curl에 들어갈 문장을 수정해 원하는 문제 유형을 선택할 수도 있습니다</b>
+
+- backend + frontend + tip 질문을 받고싶은 경우 (권장)
+`rid`
+- backend 질문만 받고싶은 경우
+`rid -b`
+- frontend 질문만 받고싶은 경우
+`rid -f`
+
+위 명령어를 직접 입력해서 원할 때 질문을 받을 수도 있습니다
+
+<b>3. alias를 등록합니다</b>
+```bash
+source ~/.zshrc
+```
+
+## 로컬 버전 사용법
 <b>1. 레포를 클론합니다</b>
 ```
-git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/RID
+git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/rid
 ```
 
 <b>2. fortune 명령어를 설치합니다</b>
@@ -14,20 +47,14 @@ git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/RID
 ```
 brew install fortune
 ```
-- ubuntu
-```
-apt-get update
-apt-get install fortune-mod
-```
 
 <b>3. 터미널 설정 파일에 원하는 퀴즈를 등록합니다</b>
 - mac : `vi ~/.zshrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
-- ubuntu : `vi ~/.bashrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
 
 ```bash
-echo "정답 찾는 법 : RID [b or f] 퀴즈번호"
-fortune ~/RID/quiz
-alias RID='~/RID/query.sh'
+echo "정답 찾는 법 : rid [b or f] 퀴즈번호"
+fortune ~/rid/quiz
+alias rid='~/rid/query.sh'
 ```
 
 <b>4. alias를 등록합니다</b>
@@ -36,24 +63,19 @@ alias RID='~/RID/query.sh'
 source ~/.zshrc
 ```
 
-- ubuntu
-```bash
-source ~/.bashrc
-```
-
 💡 vi환경에서 shift + g를 누르면 파일 맨 마지막 줄로 이동합니다
 
 💡 Powerlevel10k 사용 시 instant prompt 옵션을 종료해야 콘솔 출력 경고가 발생하지 않습니다 [참고](https://github.com/JerryK026/random-interview-defense/issues/7)
 
 ## 퀴즈 파일 선택 가이드
-- 백엔드 질문만 원할 시 : `fortune ~/RID/quiz/backend.fortune`
-- 프론트엔드 질문만 원할 시 : `fortune ~/RID/quiz/frontend.fortune`
-- 프로그래밍 팁만 원할 시 : `fortune ~/RID/quiz/tip.fortune`
-- 전체 질문 + 팁을 원할 시 : `fortune ~/RID/quiz`
+- 백엔드 질문만 원할 시 : `fortune ~/rid/quiz/backend.fortune`
+- 프론트엔드 질문만 원할 시 : `fortune ~/rid/quiz/frontend.fortune`
+- 프로그래밍 팁만 원할 시 : `fortune ~/rid/quiz/tip.fortune`
+- 전체 질문 + 팁을 원할 시 : `fortune ~/rid/quiz`
 
 ## 나만의 질문 업로드 가이드
 1. 원하는 타겟 파일(`~.fortune`)을 열어 면접 질문 추가한 후, `%`기호로 구분합니다
-2. `sh ~/RID/build.sh` 명령어로 `.dat` 포맷 파일을 생성합니다
+2. `sh ~/rid/build.sh` 명령어로 `.dat` 포맷 파일을 생성합니다
 3. answer 디렉터리에서 원하는 주제 폴더에 들어가서 `문제번호.txt`로 저장합니다
 
 ## 질문 리스트
