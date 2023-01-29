@@ -1,7 +1,7 @@
 # 🏰 랜덤 면접 디펜스 🏰
 <b>랜면디</b>는 터미널을 열 때마다 랜덤한 웹 개발 기술면접 질문을 노출하는 서비스입니다
 
-<img width="588" alt="image" src="https://user-images.githubusercontent.com/55067949/211290409-ce0992db-16b6-4fee-baff-f227512e829b.png">
+![rid test](https://user-images.githubusercontent.com/55067949/215311898-eb0110ea-e381-4aad-a714-b0436c66ebc6.gif)
 
 ## 웹 버전 사용법 - 권장!
 해당 레포가 업데이트 될 때마다 pull할 필요가 없습니다
