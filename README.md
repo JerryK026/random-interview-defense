@@ -43,7 +43,10 @@ source ~/.zshrc
 git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/rid
 ```
 
-**2. sh ./init_zsh.sh로 쉘 파일을 실행합니다**
+**2. 초기화 파일을 실행합니다.**  
+```
+sh ./init_zsh.sh
+```
 💡 `~.zshrc`에 설정 정보를 등록하니 추후에 문제 발생시 해당 부분을 지워주세요.
 
 💡 Powerlevel10k 사용 시 instant prompt 옵션을 종료해야 콘솔 출력 경고가 발생하지 않습니다 [참고](https://github.com/JerryK026/random-interview-defense/issues/7)
