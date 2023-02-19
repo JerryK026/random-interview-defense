@@ -38,46 +38,19 @@ source ~/.zshrc
 ```
 
 ## 로컬 버전 사용법
-<b>1. 레포를 클론합니다</b>
+**1. 레포를 클론합니다**
 ```
 git clone https://github.com/JerryK026/Random-Interview-Defense.git ~/rid
 ```
 
-<b>2. fortune 명령어를 설치합니다</b>
-- brew
-```
-brew install fortune
-```
-
-<b>3. 터미널 설정 파일에 원하는 퀴즈를 등록합니다</b>
-- mac : `vi ~/.zshrc`로 접속 후 마지막 줄에 다음 문장을 추가한 후 저장합니다
-
-```bash
-alias rid='~/rid/query.sh'
-echo "정답 찾는 법 : rid [b or f] 퀴즈번호"
-fortune ~/rid/quiz
-```
-
-<b>4. alias를 등록합니다</b>
-- mac
-```bash
-source ~/.zshrc
-```
-
-💡 vi환경에서 shift + g를 누르면 파일 맨 마지막 줄로 이동합니다
+**2. sh ./init_zsh.sh로 쉘 파일을 실행합니다**
+💡 `~.zshrc`에 설정 정보를 등록하니 추후에 문제 발생시 해당 부분을 지워주세요.
 
 💡 Powerlevel10k 사용 시 instant prompt 옵션을 종료해야 콘솔 출력 경고가 발생하지 않습니다 [참고](https://github.com/JerryK026/random-interview-defense/issues/7)
 
-## 퀴즈 파일 선택 가이드
-- 백엔드 질문만 원할 시 : `fortune ~/rid/quiz/backend.fortune`
-- 프론트엔드 질문만 원할 시 : `fortune ~/rid/quiz/frontend.fortune`
-- 프로그래밍 팁만 원할 시 : `fortune ~/rid/quiz/tip.fortune`
-- 전체 질문 + 팁을 원할 시 : `fortune ~/rid/quiz`
-
 ## 나만의 질문 업로드 가이드
-1. 원하는 타겟 파일(`~.fortune`)을 열어 면접 질문 추가한 후, `%`기호로 구분합니다
-2. `sh ~/rid/build.sh` 명령어로 `.dat` 포맷 파일을 생성합니다
-3. answer 디렉터리에서 원하는 주제 폴더에 들어가서 `문제번호.txt`로 저장합니다
+`db.json` 파일에 질문 / 답변이 등록되어 있습니다. 양식에 맞게 커스텀 질문 / 답변을 추가할 수 있습니다.
+
 
 ## 질문 리스트
 질문 리스트는 [위키](https://github.com/JerryK026/random-interview-defense/wiki)에서 확인할 수 있습니다!
