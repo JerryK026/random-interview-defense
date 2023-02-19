@@ -53,7 +53,7 @@ class Query:
             return self.get_quiz("backend", target)
 
         if target < f_exclude:
-            return self.get_quiz("frontent", target - b_exclude + 1)
+            return self.get_quiz("frontend", target - b_exclude + 1)
 
         if target < t_exclude:
             return self.get_quiz("tip", target - f_exclude + 1)
