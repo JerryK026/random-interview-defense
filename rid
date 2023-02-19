@@ -3,6 +3,7 @@
 import json
 import random
 import sys
+import os
 
 
 # todo: 검색 기능 추가
@@ -20,16 +21,16 @@ def parse_cache(line):
     return {'type': split[0], 'id': split[1]}
 
 
-def load_cache():
+def load_cache(file_path):
     try:
-        with open('./cache', 'r') as f:
+        with open(file_path, 'r') as f:
             return parse_cache(f.readline())
     except FileNotFoundError:
         return
 
 
-def save_cache(type, id):
-    f = open('./cache', 'w')
+def save_cache(file_path, type, id):
+    f = open(file_path, 'w')
     cache_str = str(type) + " " + str(id)
     f.write(cache_str)
 
@@ -39,8 +40,8 @@ class Query:
         self.question_query_type_table = {"-b": "backend", "-f": "frontend", "-t": "tip"}
         self.question_type_command = None if len(sys.argv) <= 1 else sys.argv[1]
         self.question_id = None if len(sys.argv) <= 2 else sys.argv[2]
-        self.content = load_json('./db.json')
-        self.cache = load_cache()
+        self.content = load_json(os.environ['RID_PATH'] + "/db.json")
+        self.cache = load_cache(os.environ['RID_PATH'] + "/cache")
 
     def extract_total(self):
         b_exclude = 1 + len(self.content['backend'])
@@ -68,7 +69,7 @@ class Query:
     def get_quiz(self, question_type, quiz_id):
         quiz_id = str(quiz_id)
         if question_type != "tip":
-            save_cache(question_type, quiz_id)
+            save_cache(os.environ['RID_PATH'] + '/cache', question_type, quiz_id)
 
         return quiz_id, self.content[question_type][quiz_id]
 
