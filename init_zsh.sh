@@ -12,4 +12,3 @@ echo "alias rid='$RID_PATH/${file_name}'" >> ~/.zshrc
 echo "rid" >> ~/.zshrc
 echo "# 랜면디 정보 등록 끝\n" >> ~/.zshrc
 echo "랜면디 초기화 완료!"
-source ~/.zshrc
