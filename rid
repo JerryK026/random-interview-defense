@@ -1,0 +1,166 @@
+#!/usr/bin/env python
+
+import json
+import random
+import sys
+import os
+
+
+# todo: 검색 기능 추가
+def load_json(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print('db.json 파일이 존재하지 않습니다. https://github.com/JerryK026/random-interview-defense에서 최신의 파일을 설치해 주세요.')
+        return
+
+
+def parse_cache(line):
+    split = line.split()
+    return {'type': split[0], 'id': split[1]}
+
+
+def load_cache(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            return parse_cache(f.readline())
+    except FileNotFoundError:
+        return
+
+
+def save_cache(file_path, type, id):
+    f = open(file_path, 'w')
+    cache_str = str(type) + " " + str(id)
+    f.write(cache_str)
+
+
+class Query:
+    def __init__(self):
+        self.question_query_type_table = {"-b": "backend", "-f": "frontend", "-t": "tip"}
+        self.question_type_command = None if len(sys.argv) <= 1 else sys.argv[1]
+        self.question_id = None if len(sys.argv) <= 2 else sys.argv[2]
+        self.content = load_json(os.environ['RID_PATH'] + "/db.json")
+        self.cache = load_cache(os.environ['RID_PATH'] + "/cache")
+
+    def extract_total(self):
+        b_exclude = 1 + len(self.content['backend'])
+        f_exclude = len(self.content['frontend']) + b_exclude
+        t_exclude = len(self.content['tip']) + f_exclude
+
+        target = random.randrange(1, t_exclude)
+
+        if target < b_exclude:
+            return self.get_quiz("backend", target)
+
+        if target < f_exclude:
+            return self.get_quiz("frontend", target - b_exclude + 1)
+
+        if target < t_exclude:
+            return self.get_quiz("tip", target - f_exclude + 1)
+
+        raise Exception("잘못된 수를 추출했습니다.")
+
+    def extract_single(self, question_type):
+        quiz_id = random.randrange(1, len(self.content) + 1)
+
+        return self.get_quiz(question_type, str(quiz_id))
+
+    def get_quiz(self, question_type, quiz_id):
+        quiz_id = str(quiz_id)
+        if question_type != "tip":
+            save_cache(os.environ['RID_PATH'] + '/cache', question_type, quiz_id)
+
+        return quiz_id, self.content[question_type][quiz_id]
+
+    def dispatcher(self):
+        question_query_type_table = {"-b": "backend", "-f": "frontend", "-t": "tip"}
+
+        if self.question_type_command is None:
+            return self.extract_total()
+
+        if self.question_type_command in question_query_type_table:
+            if self.question_id is None:
+                return self.extract_single(question_query_type_table[self.question_type_command])
+
+            return self.get_quiz(question_query_type_table[self.question_type_command], self.question_id)
+
+        if self.question_type_command == "-r":
+            return self.get_quiz(self.cache['type'], self.cache['id'])
+
+        if self.question_type_command == "-c":
+            return None, None
+
+        print("rid [type]: 해당 타입의 문제에 대한 질문 요청\n-b: 백엔드 질문  -f: 프론트 엔드 질문  -t: 기타 TIL 팁 정보  -h: 명령어 요청 -c: 카테고리별 컨텐츠 검색"
+              "\nex) "
+              "rid -b\nrid [type] [number]: 해당 문제에 대한 답변 요청\nex) rid -f 5")
+        exit()
+
+    def category_target_factory(self, question_type):
+        if question_type in ["backend", "frontend"]:
+            return "quiz"
+
+        else:
+            return "contents"
+
+    # 매번 전역에 카테고리를 올리는 것은 비효율적이므로 필요할 때만 검색하도록 호출하는 방식
+    def get_categories(self):
+        keyword = self.question_id
+        quiz_type_list = ["backend", "frontend", "tip"]
+        output = ""
+
+        for question_type in quiz_type_list:
+            category_quiz_store = []
+            output += question_type + "\n---------------\n"
+            target = self.category_target_factory(question_type)
+            for quiz_idx in self.content[question_type]:
+                if keyword in self.content[question_type][quiz_idx]["category"]:
+                    category_quiz_store.append("Q." + quiz_idx + " " + self.content[question_type][quiz_idx][target] +
+                                               "\n")
+
+            if len(category_quiz_store) == 0:
+                output += "없음"
+
+            else:
+                for out in category_quiz_store:
+                    output += out
+
+            output += "\n---------------\n"
+
+        return output
+
+    def ask(self):
+        quiz_id, contents = self.dispatcher()
+        try :
+            output_str = self.question_query_type_table[self.question_type_command] + " "
+        # rid, rid -r, rid -c을 위한 예외처리
+        except:
+            output_str = ""
+
+        # tip
+        if self.question_type_command == '-t':
+            output_str += 'Q' + quiz_id + '.' + contents['contents']
+            if contents['contributor']:
+                output_str += '\ncontributor : ', str(contents['contributor'])
+
+        elif self.question_type_command == '-c':
+            if self.question_id is None:
+                output_str += "유효 카테고리 : [네트워크, 데이터베이스, 운영체제, 시스템 디자인, Java, JS]"
+
+            else:
+                output_str += self.get_categories()
+
+        # quiz
+        else:
+            output_str += 'Q' + quiz_id + '.' + contents['quiz']
+            if self.question_id is not None or self.question_type_command == '-r':
+                output_str += '\nA. ' + contents['answer']
+
+            if contents['contributor']:
+                output_str += '\ncontributor : ' + str(contents['contributor'])
+
+        print(output_str)
+
+
+if __name__ == '__main__':
+    Query().ask()
