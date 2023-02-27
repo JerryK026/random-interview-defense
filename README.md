@@ -3,6 +3,9 @@
 
 ![rid test](https://user-images.githubusercontent.com/55067949/215311898-eb0110ea-e381-4aad-a714-b0436c66ebc6.gif)
 
+## 도움말
+[랜면디 위키](https://github.com/JerryK026/random-interview-defense/wiki)
+
 ## 웹 버전 사용법 - 권장!
 해당 레포가 업데이트 될 때마다 pull할 필요가 없습니다
 받은 질문을 서버가 기억하고 알아서 답변합니다
