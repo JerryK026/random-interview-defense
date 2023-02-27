@@ -88,23 +88,69 @@ class Query:
         if self.question_type_command == "-r":
             return self.get_quiz(self.cache['type'], self.cache['id'])
 
-        print("rid [type]: 해당 타입의 문제에 대한 질문 요청\n-b: 백엔드 질문  -f: 프론트 엔드 질문  -t: 기타 TIL 팁 정보  -h: 명령어 요청\nex) "
+        if self.question_type_command == "-c":
+            return None, None
+
+        print("rid [type]: 해당 타입의 문제에 대한 질문 요청\n-b: 백엔드 질문  -f: 프론트 엔드 질문  -t: 기타 TIL 팁 정보  -h: 명령어 요청 -c: 카테고리별 컨텐츠 검색"
+              "\nex) "
               "rid -b\nrid [type] [number]: 해당 문제에 대한 답변 요청\nex) rid -f 5")
         exit()
+
+    def category_target_factory(self, question_type):
+        if question_type in ["backend", "frontend"]:
+            return "quiz"
+
+        else:
+            return "contents"
+
+    # 매번 전역에 카테고리를 올리는 것은 비효율적이므로 필요할 때만 검색하도록 호출하는 방식
+    def get_categories(self):
+        keyword = self.question_id
+        quiz_type_list = ["backend", "frontend", "tip"]
+        output = ""
+
+        for question_type in quiz_type_list:
+            category_quiz_store = []
+            output += question_type + "\n---------------\n"
+            target = self.category_target_factory(question_type)
+            for quiz_idx in self.content[question_type]:
+                if keyword in self.content[question_type][quiz_idx]["category"]:
+                    category_quiz_store.append("Q." + quiz_idx + " " + self.content[question_type][quiz_idx][target] +
+                                               "\n")
+
+            if len(category_quiz_store) == 0:
+                output += "없음"
+
+            else:
+                for out in category_quiz_store:
+                    output += out
+
+            output += "\n---------------\n"
+
+        return output
 
     def ask(self):
         quiz_id, contents = self.dispatcher()
         try :
             output_str = self.question_query_type_table[self.question_type_command] + " "
-        # rid, rid -r을 위한 예외처리
+        # rid, rid -r, rid -c을 위한 예외처리
         except:
             output_str = ""
 
-        if len(contents) == 2:
+        # tip
+        if self.question_type_command == '-t':
             output_str += 'Q' + quiz_id + '.' + contents['contents']
             if contents['contributor']:
                 output_str += '\ncontributor : ', str(contents['contributor'])
 
+        elif self.question_type_command == '-c':
+            if self.question_id is None:
+                output_str += "유효 카테고리 : [네트워크, 데이터베이스, 운영체제, 시스템 디자인, Java, JS]"
+
+            else:
+                output_str += self.get_categories()
+
+        # quiz
         else:
             output_str += 'Q' + quiz_id + '.' + contents['quiz']
             if self.question_id is not None or self.question_type_command == '-r':
