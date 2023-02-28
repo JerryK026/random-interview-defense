@@ -152,7 +152,11 @@ class Query:
 
         # quiz
         else:
-            output_str += 'Q' + quiz_id + '.' + contents['quiz']
+            if "quiz" in contents:
+                output_contents = contents['quiz']
+            else:
+                output_contents = contents['contents']
+            output_str += 'Q' + quiz_id + '.' + output_contents
             if self.question_id is not None or self.question_type_command == '-r':
                 output_str += '\nA. ' + contents['answer']
 
